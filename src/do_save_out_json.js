@@ -11,10 +11,10 @@ export default async (store = global.store) => {
       flag: "w+",
     })
     .then(() => {
-      console.log("\tsave ok");
+      console.log("... save ok");
     })
     .catch((err) => {
-      console.log("\tsave error:");
+      console.log("... save error:");
       // console.error(err);
       throw err;
     });
