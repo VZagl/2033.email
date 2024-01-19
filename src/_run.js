@@ -1,6 +1,6 @@
 "use strict";
 
-// import path from "path";
+import path from "path";
 
 import init_store from "./init_store.js";
 import do_init from "./do_init.js";
@@ -14,8 +14,8 @@ const rep2033date = "2023-12-15";
 //------------------------------------------------------------------
 store.dirInp =
   //
-  `D:\\WORK\\Report\\!2033.${rep2033date}.Prof.!\\OUT\\${rep2033date}\\на_отправку\\`;
-// path.join(store.dirProg, "inp");
+  // `D:\\WORK\\Report\\!2033.${rep2033date}.Prof.!\\OUT\\${rep2033date}\\на_отправку\\`;
+  path.join(store.dirProg, "inp");
 //------------------------------------------------------------------
 await do_init();
 try {

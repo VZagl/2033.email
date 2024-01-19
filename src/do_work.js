@@ -2,7 +2,7 @@ import do_w_item from "./do_w_item.js";
 import {
   ENUM_WORK_ITEM_RESULT,
   WorkItemResult,
-} from "./common/constWorkResult.js";
+} from "./common/constWorkItemResult.js";
 
 export default async (store = global.store) => {
   console.log("## do_work");
@@ -13,30 +13,31 @@ export default async (store = global.store) => {
   const keys = Object.keys(inputFiles);
   for (let i = 0; i < keys.length; i++) {
     const v = keys[i];
+    let vOutResult = {};
     // console.log("<<", outJson[v]);
-    if (!outJson[v]) outJson[v] = new Object(null);
-    const vOutResult = outJson[v];
-    if (vOutResult.result?.code === ENUM_WORK_ITEM_RESULT.Ok) {
-      console.log(`[${v}] ... skip`);
-      continue;
-    }
-    try {
-      vOutResult.result = await do_w_item({ key: v, files: inputFiles[v] });
-      // vOutResult.result = ENUM_WORK_ITEM_RESULT.Ok;
-      // delete vOutResult.result.error;
-      if (vOutResult.result.code === ENUM_WORK_ITEM_RESULT.Ok) {
-        console.log(`[${v}] ... Ok`);
-      } else {
-        console.log(`[${v}] ... Error`);
+    if (!outJson[v]) {
+      outJson[v] = {};
+    } else {
+      if (outJson[v].code === ENUM_WORK_ITEM_RESULT.Ok) {
+        console.log(`[${v}] ... skip`);
+        continue;
       }
-    } catch (error) {
-      vOutResult.result = WorkItemResult(ENUM_WORK_ITEM_RESULT.error, {
-        descr: `Ошибка обработки л/с`,
-        data: { key: v, files: inputFiles[v] },
-        error,
-      });
-      console.log(`[${v}] ... Error:`, error);
-      throw error;
     }
+    console.log(`[${v}]`);
+    try {
+      const result = await do_w_item({ key: v, files: inputFiles[v] });
+      // console.log("# result =", result);
+      vOutResult = WorkItemResult(ENUM_WORK_ITEM_RESULT.Ok, { result });
+      console.log(`... Ok`);
+    } catch (reason) {
+      vOutResult = WorkItemResult(ENUM_WORK_ITEM_RESULT.Error, {
+        descr: `Ошибка обработки л/с`,
+        // data: { key: v, files: inputFiles[v] },
+        reason,
+      });
+      console.log(`[${v}] ... Error:`, reason);
+      // throw reason;
+    }
+    outJson[v] = vOutResult;
   }
 };
