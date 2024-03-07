@@ -68,7 +68,6 @@ export default async ({ key, files }) => {
       user: store.env.smtp_user,
       pass: store.env.smtp_pwd,
     },
-    // to: curEmail,
     to: store.env.debug_to ? store.env.debug_to : curEmail,
     body: {
       file: curFilePath,

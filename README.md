@@ -22,3 +22,9 @@
 	smtp_pwd = '...'
 	#debug_to = "...@ukr.net"
 ```
+
+---
+
+## Ссылки:
+
+- https://nodemailer.com/smtp/oauth2/
