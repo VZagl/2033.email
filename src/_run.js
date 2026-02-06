@@ -8,22 +8,22 @@ import do_work from "./do_work.js";
 import do_save_out_json from "./do_save_out_json.js";
 
 //------------------------------------------------------------------
-init_store({ taskNum: "2033", taskDate: "2024-02-06" });
+init_store({ taskNum: "2033" });
 const store = global.store;
 const rep2033date = store.taskDate;
 //------------------------------------------------------------------
 store.dirInp =
-  //
-  // `D:\\WORK\\Report\\!2033.${rep2033date}.Prof.!\\OUT\\${rep2033date}\\на_отправку\\`;
-  path.join(store.dirProg, "inp");
+	//
+	// `D:\\WORK\\Report\\!2033.${rep2033date}.Prof.!\\OUT\\${rep2033date}\\на_отправку\\`;
+	path.join(store.dirProg, "inp");
 //------------------------------------------------------------------
 await do_init();
 try {
-  await do_work();
+	await do_work();
 } finally {
-  console.log("# finally");
-  await do_save_out_json();
-  console.log("# end");
+	console.log("# finally");
+	await do_save_out_json();
+	console.log("# end");
 
-  // console.log("\r\n# store =", JSON.stringify(store, null, "\t"));
+	// console.log("\r\n# store =", JSON.stringify(store, null, "\t"));
 }

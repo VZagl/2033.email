@@ -1,15 +1,26 @@
 {
-  "name": "2033-email",
-  "type": "module",
-  "main": "src/_run.js",
-  "dependencies": {
-    "dbf": "^0.2.0",
-    "dotenv": "^16.3.1",
-    "fs-extra": "^11.2.0",
-    "iconv-lite": "^0.6.3",
-    "nodemailer": "^6.9.7",
-    "odbc": "^2.4.8",
-    "prettier": "^3.1.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
-  }
+	"name": "2033-email",
+	"type": "module",
+	"main": "src/_run.js",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
+		"format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,json}\""
+	},
+	"dependencies": {
+		"dbf": "^0.2.0",
+		"dotenv": "^16.3.1",
+		"fs-extra": "^11.2.0",
+		"iconv-lite": "^0.6.3",
+		"nodemailer": "^6.9.7",
+		"odbc": "^2.4.8",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+	},
+	"devDependencies": {
+		"prettier": "^3.7.4",
+		"prettier-plugin-css-order": "^2.1.2",
+		"prettier-plugin-organize-attributes": "^1.0.0",
+		"prettier-plugin-organize-imports": "^4.3.0"
+	},
+	"packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
 }
