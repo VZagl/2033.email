@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+
+Правила оформления сообщений коммита находятся в `docs/common/git-commit-description.md`. Использовать их при генерации описания коммита и формировать сообщение на основе реальных изменений в staged файлах.
+
+Правила работы с Git (branching, rebase, merge, hooks и т.д.) находятся в `docs/common/git-workflow.md`. Следовать им при работе с Git-операциями.
