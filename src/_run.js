@@ -8,7 +8,7 @@ import do_work from "./do_work.js";
 import do_save_out_json from "./do_save_out_json.js";
 
 //------------------------------------------------------------------
-init_store({ taskNum: "2033", taskDate: "2024-02-06" });
+init_store({ taskNum: "2033" });
 const store = global.store;
 const rep2033date = store.taskDate;
 //------------------------------------------------------------------
