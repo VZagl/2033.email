@@ -5,48 +5,59 @@ This command facilitates structured reflection on completed implementation, docu
 ## Memory Bank Integration
 
 Reads from:
+
 - `memory-bank/tasks.md` - Completed implementation details
 - `memory-bank/progress.md` - Implementation status and observations
 - `memory-bank/creative/creative-*.md` - Design decisions (Level 3-4)
 
 Creates:
+
 - `memory-bank/reflection/reflection-[task_id].md` - Reflection document
 
 Updates:
+
 - `memory-bank/tasks.md` - Reflection status
+- `memory-bank/activeContext.md` - Current focus (REFLECT → ARCHIVE), Next Steps
 
 ## Progressive Rule Loading
 
 ### Step 1: Load Core Rules
+
 ```
 Load: .cursor/rules/isolation_rules/main.mdc
 Load: .cursor/rules/isolation_rules/Core/memory-bank-paths.mdc
 ```
 
 ### Step 2: Load REFLECT Mode Map
+
 ```
 Load: .cursor/rules/isolation_rules/visual-maps/reflect-mode-map.mdc
 ```
 
 ### Step 3: Load Complexity-Specific Reflection Rules
+
 Based on complexity level from `memory-bank/tasks.md`:
 
 **Level 1:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level1/quick-documentation.mdc
 ```
 
 **Level 2:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level2/reflection-basic.mdc
 ```
 
 **Level 3:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level3/reflection-intermediate.mdc
 ```
 
 **Level 4:**
+
 ```
 Load: .cursor/rules/isolation_rules/Level4/reflection-comprehensive.mdc
 ```
@@ -89,6 +100,7 @@ Load: .cursor/rules/isolation_rules/Level4/reflection-comprehensive.mdc
 
 5. **Update Memory Bank**
    - Update `memory-bank/tasks.md` with reflection status
+   - Update `memory-bank/activeContext.md`: Current Focus = REFLECT завершён; Current Mode = REFLECT → ARCHIVE; Next Steps = /archive
    - Mark reflection phase as complete
 
 ## Usage
@@ -98,4 +110,3 @@ Type `/reflect` to start reflection on the completed task.
 ## Next Steps
 
 After reflection complete, proceed to `/archive` command to finalize task documentation.
-
