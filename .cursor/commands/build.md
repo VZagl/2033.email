@@ -14,6 +14,7 @@ Updates:
 
 - `memory-bank/tasks.md` - Implementation progress, test results, and status
 - `memory-bank/progress.md` - Build status, test outcomes, and observations
+- `memory-bank/activeContext.md` - Current focus (BUILD progress/complete), Next Steps (/reflect)
 
 ## Progressive Rule Loading
 
@@ -114,6 +115,7 @@ Load: .cursor/rules/isolation_rules/Level4/phased-implementation.mdc
    - Verify all success criteria tests pass
    - Verify changes meet requirements
    - Update `memory-bank/tasks.md` with completion status
+   - Update `memory-bank/activeContext.md`: Current Focus = BUILD progress/complete; Next Steps = /reflect
 
 ## Usage
 

@@ -1,1 +1,15 @@
 *.txt
+memory-bank/.qa_validation_status
+
+# TOML (Cargo.toml и др.) — Prettier не имеет парсера по умолчанию
+*.toml
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lockb
+*-lock.json
+*-lock.yaml
+*.lock
+*.lockb

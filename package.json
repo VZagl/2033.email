@@ -4,6 +4,9 @@
 	"main": "src/_run.js",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
 		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
 		"format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,json}\""
 	},
@@ -17,10 +20,13 @@
 		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
 	},
 	"devDependencies": {
+		"@vitest/coverage-v8": "^4.0.7",
+		"memfs": "^4.49.0",
 		"prettier": "^3.7.4",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-organize-attributes": "^1.0.0",
-		"prettier-plugin-organize-imports": "^4.3.0"
+		"prettier-plugin-organize-imports": "^4.3.0",
+		"vitest": "^4.0.7"
 	},
 	"packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
 }
