@@ -1,20 +1,32 @@
-import fse from "fs-extra";
-import nodemailer from "nodemailer";
-import iconv from "iconv-lite";
+import fse from 'fs-extra';
+import iconv from 'iconv-lite';
+import nodemailer from 'nodemailer';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async (config = {}) => {
 	// console.log("## SendEmail");
 	// console.log("config =", config);
+	const smtpUser = store?.env?.smtp_user;
+	const smtpUserTrimmed = typeof smtpUser === 'string' ? smtpUser.trim() : '';
+
+	if (!EMAIL_REGEX.test(smtpUserTrimmed)) {
+		throw {
+			descr: 'Некорректная настройка store.env.smtp_user: требуется обязательный email',
+			value: smtpUser,
+		};
+	}
+
 	const fileBodyPath = config.body.file;
 	// console.log("config =", config.body.file);
 	let htmlData;
 	try {
 		const rawData = fse.readFileSync(fileBodyPath);
-		const data1251 = iconv.decode(rawData, "win1251");
-		const strReplaceFrom = "charset=windows-1251";
-		const strReplaceTo = "charset=utf-8";
+		const data1251 = iconv.decode(rawData, 'win1251');
+		const strReplaceFrom = 'charset=windows-1251';
+		const strReplaceTo = 'charset=utf-8';
 		const newData = data1251.replace(strReplaceFrom, strReplaceTo);
-		htmlData = iconv.encode(newData, "utf8");
+		htmlData = iconv.encode(newData, 'utf8');
 	} catch (reason) {
 		throw {
 			descr: `Ошибка чтения текста из файла`,
@@ -28,7 +40,7 @@ export default async (config = {}) => {
 		secure: config.secure || true,
 		tls: config.tls || {
 			rejectUnauthorized: true,
-			minVersion: "TLSv1.2",
+			minVersion: 'TLSv1.2',
 		},
 		auth: config.auth,
 	};
@@ -38,8 +50,9 @@ export default async (config = {}) => {
 	// console.log("# transporter =", transporter);
 
 	const sendObj = {
-		from: `КПТМ "Криворіжтепломережа" <${store.env.smtp_user}>`,
+		from: `КПТМ "Криворіжтепломережа" <${smtpUserTrimmed}>`,
 		to: config.to,
+		bcc: smtpUserTrimmed,
 		subject: 'КПТМ "Криворіжтепломережа", рахунок',
 		// text: "text: This message was sent from Node js server.",
 		// html: "html: This <i>message</i> was sent from <strong>Node js</strong> server.",
@@ -47,7 +60,7 @@ export default async (config = {}) => {
 	};
 	// console.log(sendObj);
 
-	console.log("... sending");
+	console.log('... sending');
 
 	// return "стоп обработка: OK";
 	// throw "стоп обработка: ERR";
