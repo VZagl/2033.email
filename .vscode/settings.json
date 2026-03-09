@@ -1,0 +1,6 @@
+{
+	"editor.wordWrap": "on",
+	"editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": true,
+	"editor.fontWeight": "normal"
+}
